@@ -8,7 +8,7 @@
 class KinectTracker {
 
   // Depth threshold
-  int threshold = 600;
+  int threshold = 750;
   int lowerThreshold = -20;
   int lowerX = 50;
   int lowerY = 55;
@@ -35,7 +35,9 @@ class KinectTracker {
     //enable Kinect2
     kinect2 = new Kinect2(pa);
     kinect2.initDepth();
+    kinect2.initVideo();
     kinect2.initDevice();
+    
     
     // Make a blank image
     display = createImage(kinect2.depthWidth, kinect2.depthHeight, RGB);
