@@ -6,21 +6,29 @@
 // http://shiffman.net/p5/kinect/
 
 import org.openkinect.processing.*;
+import processing.video.*;
+import com.hamoid.*;
+
+VideoExport videoExport;
+
 
 // The kinect stuff is happening in another class
 KinectTracker tracker;
-
+Capture video;
 
 
 void setup() {
   size(640, 520);
-
+  video = new Capture(this, "name=FaceTime HD Camera (Built-in),size=320x240,fps=30");
   tracker = new KinectTracker(this);
+  printArray(Capture.list());
+  video.start();
+  
 }
 
 void draw() {
   background(255);
-
+  image(video, 0, 0);
   // Run the tracking analysis
   tracker.track();
   // Show the image
